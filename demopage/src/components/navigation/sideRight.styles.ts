@@ -1,11 +1,7 @@
-import { styled, Button as MuiButton, Box as MuiBox } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { Box as MuiBox, Button as MuiButton } from '@mui/material';
 
-interface ButtonProps {
-	selectedMenu: boolean;
-	backgroundColor: string;
-}
-
-export const Container = styled(MuiBox)`
+export const SideRightContainer = styled(MuiBox)`
 	width: 200px;
 	color: white;
 	display: flex;
@@ -13,17 +9,16 @@ export const Container = styled(MuiBox)`
 	align-items: center;
 	height: 100vh;
 	justify-content: center;
+
 	@media (max-width: 600px) {
 		width: 100%;
-		height: auto;
+		height: 5rem;
 		flex-direction: row;
-		position: fixed;
-		bottom: 0;
-		z-index: 90;
+		justify-content: space-around;
 	}
 `;
 
-export const Button = styled(MuiButton)<ButtonProps>`
+export const SideRightButton = styled(MuiButton)<{ selectedMenu: boolean; backgroundColor: string }>`
 	writing-mode: vertical-rl;
 	transform: rotate(180deg);
 	color: white;
@@ -49,9 +44,9 @@ export const Button = styled(MuiButton)<ButtonProps>`
 	}
 
 	@media (max-width: 600px) {
-		writing-mode: horizontal-tb;
-		transform: none;
-		width: calc(100vw / 3);
+		width: calc(100% / 3);
 		height: 100%;
+		writing-mode: horizontal-tb;
+		transform: rotate(0);
 	}
 `;

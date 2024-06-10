@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FaChevronUp, FaChevronDown } from 'react-icons/fa';
 import { setCurrentPage } from '../../redux/slice/characterSlice';
 import { RootState } from '../../redux/store';
-import { Container, UpButton, DownButton } from './lefter.styles';
+import { LeftContainer, LeftUpButton, LeftDownButton } from './lefter.styles';
 
 const Lefter: React.FC = () => {
 	const dispatch = useDispatch();
@@ -24,14 +24,14 @@ const Lefter: React.FC = () => {
 	};
 
 	return (
-		<Container>
-			<UpButton onClick={handlePrev}>
+		<LeftContainer>
+			<LeftUpButton onClick={handlePrev}>
 				<FaChevronUp size={30} />
-			</UpButton>
-			<DownButton onClick={handleNext}>
+			</LeftUpButton>
+			<LeftDownButton onClick={handleNext}>
 				<FaChevronDown size={30} />
-			</DownButton>
-		</Container>
+			</LeftDownButton>
+		</LeftContainer>
 	);
 };
 

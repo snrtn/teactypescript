@@ -7,7 +7,7 @@ import {
 	setCurrentPage,
 } from '../../redux/slice/characterSlice';
 import { RootState, AppDispatch } from '../../redux/store';
-import { Container, Button, CharacterName } from './sideLeft.styles';
+import { SideLeftContainer, SideLeftButton, SideLeftCharacterName } from './sideLeft.styles';
 
 interface SideLeftProps {
 	onClose: () => void;
@@ -48,9 +48,9 @@ const SideLeft: React.FC<SideLeftProps> = ({ onClose }) => {
 	const displayedCharacters = characters.slice(startIndex, startIndex + charactersPerPage);
 
 	return (
-		<Container>
+		<SideLeftContainer>
 			{displayedCharacters.map((character) => (
-				<Button
+				<SideLeftButton
 					key={character.name}
 					selected={selectedCharacter === character.name}
 					backgroundColor={backgroundColors[1]}
@@ -61,10 +61,10 @@ const SideLeft: React.FC<SideLeftProps> = ({ onClose }) => {
 						}.png)`,
 					}}
 				>
-					<CharacterName>{character.name}</CharacterName>
-				</Button>
+					<SideLeftCharacterName>{character.name}</SideLeftCharacterName>
+				</SideLeftButton>
 			))}
-		</Container>
+		</SideLeftContainer>
 	);
 };
 

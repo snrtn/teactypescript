@@ -13,7 +13,7 @@ interface CharacterState {
 	error: string | null;
 	characterDetails: { [key: string]: any };
 	backgroundColors: string[];
-	characterColors: { [key: string]: string[] }; // 각 캐릭터의 색상 저장
+	characterColors: { [key: string]: string[] };
 }
 
 const initialState: CharacterState = {
@@ -24,8 +24,8 @@ const initialState: CharacterState = {
 	status: 'idle',
 	error: null,
 	characterDetails: {},
-	backgroundColors: ['#1e1e1e', '#1e1e1e'], // 기본 배경색
-	characterColors: {}, // 초기 캐릭터 색상
+	backgroundColors: ['#1e1e1e', '#1e1e1e'],
+	characterColors: {},
 };
 
 export const fetchCharacters = createAsyncThunk('characters/fetchCharacters', async () => {
@@ -38,9 +38,9 @@ export const fetchCharacterDetails = createAsyncThunk(
 	async (characterUrl: string, { dispatch }) => {
 		const response = await axios.get(characterUrl);
 		const spriteUrl = response.data.sprites.front_default;
-		const palette = await getDominantColors(spriteUrl); // 주요 색상 추출
-		dispatch(setCharacterColors({ characterName: response.data.name, colors: palette })); // 각 캐릭터 색상 업데이트
-		dispatch(setBackgroundColors(palette)); // 배경 색상 업데이트
+		const palette = await getDominantColors(spriteUrl);
+		dispatch(setCharacterColors({ characterName: response.data.name, colors: palette }));
+		dispatch(setBackgroundColors(palette));
 		return { name: response.data.name, data: response.data };
 	},
 );

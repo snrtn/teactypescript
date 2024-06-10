@@ -1,7 +1,6 @@
-import { styled } from '@mui/material/styles';
-import { Box as MuiBox, TextField as MuiTextField } from '@mui/material';
+import { styled, Box as MuiBox, TextField as MuiTextField } from '@mui/material';
 
-export const Container = styled(MuiBox)`
+export const HeadContainer = styled(MuiBox)`
 	width: 100%;
 	height: 5rem;
 	position: fixed;
@@ -13,14 +12,14 @@ export const Container = styled(MuiBox)`
 	box-sizing: border-box;
 `;
 
-export const SearchBox = styled(MuiBox)`
+export const HeadSearchBox = styled(MuiBox)`
 	width: 100%;
 	max-width: 600px;
 	position: relative;
 	padding: 0 20px;
 `;
 
-export const Dropdown = styled(MuiBox)`
+export const HeadDropdown = styled(MuiBox)`
 	position: absolute;
 	width: 100%;
 	background-color: white;
@@ -30,7 +29,7 @@ export const Dropdown = styled(MuiBox)`
 	z-index: 1000;
 `;
 
-export const HamburgerIcon = styled(MuiBox)`
+export const HeadHamburgerIcon = styled(MuiBox)`
 	display: none;
 	color: white;
 	z-index: 2;
@@ -41,13 +40,13 @@ export const HamburgerIcon = styled(MuiBox)`
 	}
 `;
 
-export const SearchInput = styled(MuiTextField)`
+export const HeadSearchInput = styled(MuiTextField)`
 	width: 100%;
 
-	& .search-input::placeholder {
+	& .MuiInputBase-input::placeholder {
 		color: transparent;
 	}
-	& .search-input:focus::placeholder {
+	& .MuiInputBase-input:focus::placeholder {
 		color: white;
 	}
 `;

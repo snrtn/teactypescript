@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../redux/store';
 import { MenuType, setSelectedMenu } from '../../redux/slice/characterSlice';
-import { Container, Button } from './sideRight.styles';
+import { SideRightContainer, SideRightButton } from './sideRight.styles';
 
 const SideRight: React.FC = () => {
 	const dispatch = useDispatch<AppDispatch>();
@@ -18,9 +18,9 @@ const SideRight: React.FC = () => {
 	}
 
 	return (
-		<Container>
+		<SideRightContainer>
 			{menus.map((menu) => (
-				<Button
+				<SideRightButton
 					key={menu}
 					selectedMenu={selectedMenu === menu}
 					backgroundColor={backgroundColors[1]}
@@ -28,9 +28,9 @@ const SideRight: React.FC = () => {
 					onClick={() => dispatch(setSelectedMenu(menu))}
 				>
 					{menu}
-				</Button>
+				</SideRightButton>
 			))}
-		</Container>
+		</SideRightContainer>
 	);
 };
 

@@ -4,7 +4,14 @@ import { RootState } from '../../redux/store';
 import { FaRulerVertical } from 'react-icons/fa';
 import { GiWeight } from 'react-icons/gi';
 import { AiOutlineArrowUp } from 'react-icons/ai';
-import { Container, Title, Image, InfoText, AbilityList, AbilityItem } from './content.styles';
+import {
+	ContentContainer,
+	ContentTitle,
+	ContentImage,
+	ContentInfoText,
+	ContentAbilityList,
+	ContentAbilityItem,
+} from './content.styles';
 
 const Content: React.FC = () => {
 	const selectedCharacter = useSelector((state: RootState) => state.character.selectedCharacter);
@@ -12,34 +19,34 @@ const Content: React.FC = () => {
 	const characterDetails = useSelector((state: RootState) => state.character.characterDetails);
 
 	if (!selectedCharacter) {
-		return <Container>Select a character</Container>;
+		return <ContentContainer>Select a character</ContentContainer>;
 	}
 
 	const details = characterDetails[selectedCharacter];
 
 	if (!details) {
-		return <Container>Loading character details...</Container>;
+		return <ContentContainer>Loading character details...</ContentContainer>;
 	}
 
 	return (
-		<Container>
-			<Title>{details.name.toUpperCase()}</Title>
+		<ContentContainer>
+			<ContentTitle>{details.name.toUpperCase()}</ContentTitle>
 			{selectedMenu === 'info' && (
 				<div>
-					<Image src={details.sprites.front_default} alt={details.name} />
+					<ContentImage src={details.sprites.front_default} alt={details.name} />
 				</div>
 			)}
 			{selectedMenu === 'stats' && (
 				<div>
-					<InfoText>
+					<ContentInfoText>
 						<FaRulerVertical /> Height: {details.height}
-					</InfoText>
-					<InfoText>
+					</ContentInfoText>
+					<ContentInfoText>
 						<GiWeight /> Weight: {details.weight}
-					</InfoText>
-					<InfoText>
+					</ContentInfoText>
+					<ContentInfoText>
 						<AiOutlineArrowUp /> Base Experience: {details.base_experience}
-					</InfoText>
+					</ContentInfoText>
 				</div>
 			)}
 			{selectedMenu === 'abilities' && (
@@ -47,14 +54,14 @@ const Content: React.FC = () => {
 					<p>
 						<strong>Abilities:</strong>
 					</p>
-					<AbilityList>
+					<ContentAbilityList>
 						{details.abilities.map((ability: any, index: number) => (
-							<AbilityItem key={index}>{ability.ability.name}</AbilityItem>
+							<ContentAbilityItem key={index}>{ability.ability.name}</ContentAbilityItem>
 						))}
-					</AbilityList>
+					</ContentAbilityList>
 				</div>
 			)}
-		</Container>
+		</ContentContainer>
 	);
 };
 

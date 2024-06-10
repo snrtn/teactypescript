@@ -1,8 +1,7 @@
-// hommeView.styles.ts
 import { styled } from '@mui/material/styles';
 import { Box as MuiBox } from '@mui/material';
 
-export const Container = styled(MuiBox)<{ backgroundColors: string[] }>`
+export const HomeContainer = styled(MuiBox)<{ backgroundColors: string[] }>`
 	display: flex;
 	height: 100vh;
 	background: ${({ backgroundColors }) =>
@@ -14,7 +13,7 @@ export const Container = styled(MuiBox)<{ backgroundColors: string[] }>`
 	}
 `;
 
-export const ContentBox = styled(MuiBox)`
+export const HomeContentBox = styled(MuiBox)`
 	flex-grow: 1;
 	padding: 16px;
 	color: white;
@@ -42,7 +41,7 @@ export const HamburgerIcon = styled(MuiBox)`
 	}
 `;
 
-export const MenuContainer = styled(MuiBox)<{ menuOpen: boolean }>`
+export const HomeMenuContainer = styled(MuiBox)<{ menuOpen: boolean }>`
 	display: flex;
 	transition: transform 0.3s ease-in-out;
 	transform: ${({ menuOpen }) => (menuOpen ? 'translateX(0)' : 'translateX(-100%)')};

@@ -6,9 +6,9 @@ import SideRight from '../components/navigation/sideRight';
 import Content from '../components/home/content';
 import Header from '../components/navigation/header';
 import { RootState } from '../redux/store';
-import { Container, ContentBox, MenuContainer } from './hommeView.styles';
+import { HomeContainer, HomeContentBox, HomeMenuContainer } from './homeView.styles';
 
-const HommeView: React.FC = () => {
+const HomeView: React.FC = () => {
 	const backgroundColors = useSelector((state: RootState) => state.character.backgroundColors);
 	const [menuOpen, setMenuOpen] = useState(false);
 
@@ -17,18 +17,18 @@ const HommeView: React.FC = () => {
 	};
 
 	return (
-		<Container backgroundColors={backgroundColors}>
+		<HomeContainer backgroundColors={backgroundColors}>
 			<Header toggleMenu={toggleMenu} />
-			<MenuContainer menuOpen={menuOpen}>
+			<HomeMenuContainer menuOpen={menuOpen}>
 				<Lefter />
 				<SideLeft onClose={toggleMenu} />
-			</MenuContainer>
-			<ContentBox>
+			</HomeMenuContainer>
+			<HomeContentBox>
 				<Content />
-			</ContentBox>
+			</HomeContentBox>
 			<SideRight />
-		</Container>
+		</HomeContainer>
 	);
 };
 
-export default HommeView;
+export default HomeView;

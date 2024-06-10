@@ -1,7 +1,7 @@
-// sideLeft.styles.ts
-import { styled, Box as MuiBox, Button as MuiButton, Typography as MuiTypography } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { Box as MuiBox, Button as MuiButton, Typography as MuiTypography } from '@mui/material';
 
-export const Container = styled(MuiBox)`
+export const SideLeftContainer = styled(MuiBox)`
 	width: 200px;
 	color: white;
 	display: flex;
@@ -10,7 +10,7 @@ export const Container = styled(MuiBox)`
 	height: 100vh;
 `;
 
-export const Button = styled(MuiButton)<{ selected: boolean; backgroundColor: string }>`
+export const SideLeftButton = styled(MuiButton)<{ selected: boolean; backgroundColor: string }>`
 	width: 100%;
 	height: calc(100vh / 4);
 	text-align: left;
@@ -40,7 +40,7 @@ export const Button = styled(MuiButton)<{ selected: boolean; backgroundColor: st
 	}
 `;
 
-export const CharacterName = styled(MuiTypography)`
+export const SideLeftCharacterName = styled(MuiTypography)`
 	position: relative;
 	z-index: 1;
 `;

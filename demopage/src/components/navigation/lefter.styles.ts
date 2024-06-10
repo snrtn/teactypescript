@@ -1,15 +1,15 @@
-import { styled, Box as MuiBox, Button as MuiButton } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { Box as MuiBox, Button as MuiButton } from '@mui/material';
 
-export const Container = styled(MuiBox)`
+export const LeftContainer = styled(MuiBox)`
 	padding: 16px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: end;
-	padding-top: 7rem;
 `;
 
-export const StyledButton = styled(MuiButton)`
+export const LeftStyledButton = styled(MuiButton)`
 	color: white;
 	margin-bottom: 40px;
 
@@ -18,10 +18,10 @@ export const StyledButton = styled(MuiButton)`
 	}
 `;
 
-export const UpButton = styled(StyledButton)`
+export const LeftUpButton = styled(LeftStyledButton)`
 	margin-bottom: 64px;
 `;
 
-export const DownButton = styled(StyledButton)`
+export const LeftDownButton = styled(LeftStyledButton)`
 	margin-bottom: 80px;
 `;

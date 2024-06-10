@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import LayoutView from './view/layoutView';
-import HommeView from './view/hommeView';
+import HommeView from './view/homeView';
 import NotFoundView from './view/notFoundView';
 
 const App: React.FC = () => {

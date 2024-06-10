@@ -1,10 +1,9 @@
-// header.tsx
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../../redux/store';
 import { fetchCharacters, setSelectedCharacter, fetchCharacterDetails } from '../../redux/slice/characterSlice';
 import { List, ListItem, ListItemAvatar, Avatar, ListItemText, InputAdornment } from '@mui/material';
-import { Container, Dropdown, SearchBox, HamburgerIcon, SearchInput } from './header.styles';
+import { HeadContainer, HeadDropdown, HeadSearchBox, HeadHamburgerIcon, HeadSearchInput } from './header.styles';
 import { FaBars, FaSearch } from 'react-icons/fa';
 
 interface HeaderProps {
@@ -47,9 +46,9 @@ const Header: React.FC<HeaderProps> = ({ toggleMenu }) => {
 	};
 
 	return (
-		<Container>
-			<SearchBox>
-				<SearchInput
+		<HeadContainer>
+			<HeadSearchBox>
+				<HeadSearchInput
 					fullWidth
 					placeholder='Search characters'
 					value={searchTerm}
@@ -67,7 +66,7 @@ const Header: React.FC<HeaderProps> = ({ toggleMenu }) => {
 					}}
 				/>
 				{filteredCharacters.length > 0 && (
-					<Dropdown>
+					<HeadDropdown>
 						<List>
 							{filteredCharacters.map((character) => (
 								<ListItem key={character.name} button onClick={() => handleCharacterClick(character)}>
@@ -83,13 +82,13 @@ const Header: React.FC<HeaderProps> = ({ toggleMenu }) => {
 								</ListItem>
 							))}
 						</List>
-					</Dropdown>
+					</HeadDropdown>
 				)}
-			</SearchBox>
-			<HamburgerIcon onClick={toggleMenu}>
+			</HeadSearchBox>
+			<HeadHamburgerIcon onClick={toggleMenu}>
 				<FaBars size={30} />
-			</HamburgerIcon>
-		</Container>
+			</HeadHamburgerIcon>
+		</HeadContainer>
 	);
 };
 
