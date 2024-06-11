@@ -6,7 +6,7 @@ import SideRight from '../components/navigation/sideRight';
 import Content from '../components/home/content';
 import Header from '../components/navigation/header';
 import { RootState } from '../redux/store';
-import { HomeContainer, HomeContentBox, HomeMenuContainer } from './homeView.styles';
+import { HomeWrapper, HomeContainer, HomeContentBox, HomeMenuContainer } from './homeView.styles';
 
 const HomeView: React.FC = () => {
 	const backgroundColors = useSelector((state: RootState) => state.character.backgroundColors);
@@ -17,17 +17,19 @@ const HomeView: React.FC = () => {
 	};
 
 	return (
-		<HomeContainer backgroundColors={backgroundColors}>
-			<Header toggleMenu={toggleMenu} />
-			<HomeMenuContainer menuOpen={menuOpen}>
-				<Lefter />
-				<SideLeft onClose={toggleMenu} />
-			</HomeMenuContainer>
-			<HomeContentBox>
-				<Content />
-			</HomeContentBox>
-			<SideRight />
-		</HomeContainer>
+		<HomeWrapper>
+			<HomeContainer backgroundColors={backgroundColors}>
+				<Header toggleMenu={toggleMenu} />
+				<HomeMenuContainer menuOpen={menuOpen}>
+					<Lefter />
+					<SideLeft onClose={toggleMenu} />
+				</HomeMenuContainer>
+				<HomeContentBox>
+					<Content />
+				</HomeContentBox>
+				<SideRight />
+			</HomeContainer>
+		</HomeWrapper>
 	);
 };
 

@@ -10,7 +10,7 @@ const CharacterDetailCard = styled('div')`
 	border-radius: 8px;
 	padding: 16px;
 	margin: 8px;
-	text-align: center;
+	text-align: left;
 `;
 
 const CharacterDetail: React.FC = () => {
@@ -34,6 +34,21 @@ const CharacterDetail: React.FC = () => {
 		return <p>{error}</p>;
 	}
 
+	const formatAboutText = (text: string) => {
+		const keywords = ['Age', 'Birthdate', 'Height', 'Affiliation', 'Position', 'Devil fruit', 'Bounty'];
+		const regex = new RegExp(`(${keywords.join('|')})`, 'g');
+		return text.split(regex).map((part, index) =>
+			keywords.includes(part) ? (
+				<span key={index}>
+					<br />
+					<b>{part}</b>
+				</span>
+			) : (
+				<span style={{ marginRight: '8px' }}>{part}</span>
+			),
+		);
+	};
+
 	return (
 		<section>
 			<h2>Character Detail</h2>
@@ -44,13 +59,16 @@ const CharacterDetail: React.FC = () => {
 						<img src={characterDetail.images.jpg.image_url} alt={characterDetail.name} />
 					)}
 					<p>{characterDetail.name_kanji}</p>
-					<p>Nicknames: {characterDetail.nicknames.join(', ')}</p>
-					<p>Favorites: {characterDetail.favorites}</p>
-					<ul>
-						{characterDetail.about.split(';').map((line, index) => (
-							<p key={index}>{line.trim()}</p>
-						))}
-					</ul>
+					<p>
+						<strong>Nicknames:</strong> {characterDetail.nicknames.join(', ')}
+					</p>
+					<p>
+						<strong>Favorites:</strong> {characterDetail.favorites}
+					</p>
+
+					{characterDetail.about.split(';').map((line, index) => (
+						<span key={index}>{formatAboutText(line.trim())}</span>
+					))}
 				</CharacterDetailCard>
 			)}
 		</section>

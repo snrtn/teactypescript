@@ -1,6 +1,12 @@
 import { styled } from '@mui/material/styles';
 import { Box as MuiBox } from '@mui/material';
 
+export const HomeWrapper = styled(MuiBox)`
+	background-image: url('./assets/newBarkTown.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+`;
+
 export const HomeContainer = styled(MuiBox)<{ backgroundColors: string[] }>`
 	display: flex;
 	height: 100vh;

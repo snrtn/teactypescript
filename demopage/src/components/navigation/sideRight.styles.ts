@@ -46,6 +46,7 @@ export const SideRightButton = styled(MuiButton)<{ selectedMenu: boolean; backgr
 	@media (max-width: 600px) {
 		width: calc(100% / 3);
 		height: 100%;
+		font-size: 0.6em;
 		writing-mode: horizontal-tb;
 		transform: rotate(0);
 	}
