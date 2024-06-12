@@ -1,9 +1,8 @@
+// Header.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { styled } from '@mui/material';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
+import { styled, Toolbar, Button } from '@mui/material';
+import CustomAppBar from '../mui/customAppBar';
 
 const NavLink = styled(Link)({
 	textDecoration: 'none',
@@ -13,7 +12,7 @@ const NavLink = styled(Link)({
 
 const Header: React.FC = () => {
 	return (
-		<AppBar position='static'>
+		<CustomAppBar position='fixed'>
 			<Toolbar>
 				<NavLink to='/'>
 					<Button color='inherit'>Agents</Button>
@@ -25,7 +24,7 @@ const Header: React.FC = () => {
 					<Button color='inherit'>Weapons</Button>
 				</NavLink>
 			</Toolbar>
-		</AppBar>
+		</CustomAppBar>
 	);
 };
 
