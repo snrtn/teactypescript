@@ -16,7 +16,7 @@ const WeaponPage: React.FC = () => {
 				<ul>
 					{weapons.map((weapon: any) => (
 						<li key={weapon.uuid} style={{ marginBottom: '20px' }}>
-							<img src={weapon.displayIcon} alt={weapon.displayName} width='50' height='50' />
+							<img src={weapon.displayIcon} alt={weapon.displayName} width='50' height='100%' />
 							<h2>{weapon.displayName}</h2>
 							<p>
 								<strong>Category:</strong> {weapon.category}

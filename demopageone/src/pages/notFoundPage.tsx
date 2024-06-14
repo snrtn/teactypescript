@@ -7,7 +7,7 @@ const CenteredContainer = styled(Container)({
 	flexDirection: 'column',
 	alignItems: 'center',
 	justifyContent: 'center',
-	height: '100vh',
+	height: '80vh',
 	textAlign: 'center',
 });
 

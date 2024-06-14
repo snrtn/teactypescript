@@ -5,21 +5,23 @@ declare module '@mui/material/styles' {
 	interface Palette {
 		black: Palette['primary'];
 		white: Palette['primary'];
+		red: Palette['primary'];
 	}
 
 	interface PaletteOptions {
 		black?: PaletteOptions['primary'];
 		white?: PaletteOptions['primary'];
+		red?: PaletteOptions['primary'];
 	}
 }
 
 const themeOptions: ThemeOptions = {
 	palette: {
 		primary: {
-			main: '#1976d2',
+			main: '#0E1822',
 		},
-		secondary: {
-			main: '#dc004e',
+		red: {
+			main: '#FD4655',
 		},
 		black: {
 			main: '#1D1D1F',

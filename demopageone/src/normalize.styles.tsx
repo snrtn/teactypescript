@@ -2,7 +2,6 @@ import { GlobalStyles } from '@mui/material';
 
 const globalStyles = {
 	html: {
-		margin: '0%',
 		fontSize: '62.5%',
 		// 1rem = 10px
 		// 128px = 12.8rem, 4px = 0.4rem
@@ -12,9 +11,8 @@ const globalStyles = {
 	},
 	body: {
 		paddingTop: '70px',
+		margin: '0%',
 		fontFamily: "'Open Sans', sans-serif !important",
-		color: '#1D1D1F',
-		// color: '#F5F5F7',
 	},
 };
 
