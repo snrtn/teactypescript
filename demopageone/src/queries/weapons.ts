@@ -1,4 +1,4 @@
-import createUseDataHook from '../hooks/createUseDataHook';
+import valorantDataHook from '../hooks/valorantDataHook';
 import { setWeapons } from '../store/weaponsSlice';
 
-export const useWeapons = createUseDataHook('weapons', setWeapons);
+export const useWeapons = valorantDataHook('weapons', setWeapons);

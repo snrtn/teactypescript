@@ -1,6 +1,7 @@
 import React from 'react';
 import { styled, Container, Typography, Button } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
+import theme from '../theme';
 
 const CenteredContainer = styled(Container)({
 	display: 'flex',
@@ -16,7 +17,7 @@ const NotFoundPage: React.FC = () => {
 
 	return (
 		<CenteredContainer>
-			<Typography variant='h1' component='h1'>
+			<Typography variant='h1' component='h1' style={{ color: theme.palette.red.main }}>
 				404
 			</Typography>
 			<Typography variant='h4' component='h2'>
@@ -30,7 +31,7 @@ const NotFoundPage: React.FC = () => {
 					Go to Home
 				</Button>
 			</Link>
-			<Button variant='outlined' color='secondary' onClick={() => navigate(-1)} style={{ marginTop: '10px' }}>
+			<Button variant='outlined' onClick={() => navigate(-1)} style={{ marginTop: '10px' }}>
 				Go Back
 			</Button>
 		</CenteredContainer>

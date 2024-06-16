@@ -1,15 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import fetchData from './fetchData';
+import fetchAgent from '../data/fetchAgent';
 
-const createUseDataHook = (endpoint: string, actionCreator: any) => {
+const valorantDataHook = (endpoint: string, actionCreator: any) => {
 	return () => {
 		const dispatch = useDispatch();
 
 		const queryResult = useQuery({
 			queryKey: [endpoint],
-			queryFn: () => fetchData(endpoint),
+			queryFn: () => fetchAgent(endpoint),
 		});
 
 		useEffect(() => {
@@ -22,4 +22,4 @@ const createUseDataHook = (endpoint: string, actionCreator: any) => {
 	};
 };
 
-export default createUseDataHook;
+export default valorantDataHook;

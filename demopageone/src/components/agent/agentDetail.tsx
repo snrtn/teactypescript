@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Box } from '@mui/material';
 import AgentSideTab from './agentSideTab';
@@ -10,7 +10,12 @@ import {
 	BackgroundImage,
 	PortraitImage,
 	RoleBox,
+	SkillBox,
+	SkillContent,
+	VideoBox,
+	OverlayBox,
 } from './agentDetail.styles';
+import fetchVideo from '../../data/fetchVideo';
 
 interface AgentDetailsProps {
 	agentName?: string;
@@ -21,6 +26,21 @@ const AgentDetail: React.FC<AgentDetailsProps> = ({ agentName, tab }) => {
 	const agents = useSelector((state: any) => state.agents.agents);
 	const decodedAgentName = decodeURIComponent(agentName || '');
 	const agent = agents.find((agent: any) => agent.displayName === decodedAgentName);
+	const [videoId, setVideoId] = useState<string | null>(null);
+
+	useEffect(() => {
+		const getVideo = async () => {
+			if (agent && tab && tab !== 'info') {
+				const ability = agent.abilities.find((ability: any) => ability.displayName === tab);
+				if (ability) {
+					const query = `${agent.displayName} ${ability.displayName}`;
+					const video = await fetchVideo(query);
+					setVideoId(video);
+				}
+			}
+		};
+		getVideo();
+	}, [agent, tab]);
 
 	if (!agent) {
 		return <p>Agent not found: {decodedAgentName}</p>;
@@ -69,11 +89,31 @@ const AgentDetail: React.FC<AgentDetailsProps> = ({ agentName, tab }) => {
 		const ability = agent.abilities.find((ability: any) => ability.displayName === tab);
 
 		return (
-			<ContentBox agent={agent}>
-				<h1>{ability?.displayName}</h1>
-				<img src={ability?.displayIcon} alt={ability?.displayName} width='50' height='50' />
-				<h2>{ability?.description}</h2>
-			</ContentBox>
+			<SkillBox>
+				<SkillContent>
+					<img src={ability?.displayIcon} alt={ability?.displayName} width='150' height='150' />
+					<h1>{ability?.displayName}</h1>
+					<h3>{ability?.description}</h3>
+				</SkillContent>
+				<VideoBox>
+					{videoId ? (
+						<>
+							<iframe
+								width='100%'
+								height='315px'
+								src={`https://www.youtube.com/embed/${videoId}?controls=0&loop=1&playlist=${videoId}&autoplay=1&modestbranding=1`}
+								title='YouTube video player'
+								frameBorder='0'
+								allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+								allowFullScreen
+							></iframe>
+							<OverlayBox />
+						</>
+					) : (
+						<p>No video found</p>
+					)}
+				</VideoBox>
+			</SkillBox>
 		);
 	};
 

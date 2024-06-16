@@ -1,6 +1,5 @@
 import { styled, keyframes } from '@mui/material/styles';
 import { Box } from '@mui/material';
-
 const scrollAnimation = keyframes`
   0% { transform: translateX(0); }
   100% { transform: translateX(-33.333%); }
@@ -11,7 +10,7 @@ const reverseScrollAnimation = keyframes`
   100% { transform: translateX(33.333%); }
 `;
 
-export const StyledHomePageContainer = styled(Box)({
+export const StyledHomePageContainer = styled(Box)(({ theme }) => ({
 	width: '100vw',
 	height: '100vh',
 	display: 'flex',
@@ -19,9 +18,9 @@ export const StyledHomePageContainer = styled(Box)({
 	justifyContent: 'space-around',
 	alignItems: 'center',
 	overflow: 'hidden',
-	backgroundColor: '#0E1822',
+	backgroundColor: theme.palette.primary.main,
 	position: 'relative',
-});
+}));
 
 export const ContainerWrapper = styled(Box)({
 	width: '100%',

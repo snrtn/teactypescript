@@ -6,11 +6,13 @@ const addHashToColors = (colors: string[]) => colors.map((color) => `#${color}`)
 export const Container = styled(Box)(({ theme }) => ({
 	display: 'flex',
 	height: '90vh',
+	maxHeight: '120vh',
 	overflow: 'hidden',
 	boxSizing: 'border-box',
 	flexDirection: 'row',
 	[theme.breakpoints.down('sm')]: {
-		height: '115vh',
+		height: '150vh',
+		maxHeight: '200vh',
 	},
 }));
 
@@ -20,12 +22,13 @@ export const ContentBox = styled(Box)<{ agent: any }>(({ agent, theme }) => ({
 	padding: '0 30px',
 	height: '100%',
 	display: 'flex',
+	fontSize: '1.4rem',
 	justifyContent: 'center',
 	[theme.breakpoints.down('md')]: {
 		flexDirection: 'column-reverse',
 	},
 	[theme.breakpoints.down('sm')]: {
-		paddingTop: '40px',
+		paddingTop: '50px',
 		justifyContent: 'start',
 	},
 }));
@@ -100,6 +103,7 @@ export const RoleBox = styled(Box)(({ theme }) => ({
 	border: '20px solid transparent',
 	borderRadius: '8px',
 	backgroundColor: 'rgba(255, 255, 255, 0.1)',
+	fontSize: '1.4rem',
 	'& img': {
 		marginRight: '10px',
 	},
@@ -114,3 +118,59 @@ export const RoleBox = styled(Box)(({ theme }) => ({
 		},
 	},
 }));
+
+export const SkillBox = styled(Box)(({ theme }) => ({
+	color: '#fff',
+	display: 'flex',
+	height: '100%',
+	justifyContent: 'center',
+	alignItems: 'center',
+	padding: '0 100px 0 200px',
+	[theme.breakpoints.down('sm')]: {
+		flexDirection: 'column',
+		padding: '0',
+	},
+}));
+
+export const SkillContent = styled(Box)(({ theme }) => ({
+	display: 'flex',
+	flexDirection: 'column',
+	alignItems: 'center',
+	fontSize: '1.4rem',
+	boxSizing: 'border-box',
+	padding: '0 50px 0 0',
+	flex: 1,
+	[theme.breakpoints.down('sm')]: {
+		flexDirection: 'column',
+		flex: 0.5,
+		padding: '150px 30px 0px 30px',
+	},
+}));
+
+export const VideoBox = styled(Box)(({ theme }) => ({
+	flex: 1,
+	width: '90%',
+	height: '100%',
+	justifyContent: 'center',
+	alignItems: 'center',
+	display: 'flex',
+	[theme.breakpoints.down('sm')]: {
+		width: '100%',
+		padding: '0 0 200px 0',
+		margin: '0',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+}));
+
+export const OverlayBox = styled(Box)({
+	position: 'absolute',
+	top: 0,
+	left: 0,
+	width: '100%',
+	height: '100%',
+	zIndex: 1,
+	backgroundColor: 'transparent',
+	pointerEvents: 'none',
+});

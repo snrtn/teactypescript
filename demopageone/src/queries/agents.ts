@@ -1,4 +1,4 @@
-import createUseDataHook from '../hooks/createUseDataHook';
+import valorantDataHook from '../hooks/valorantDataHook';
 import { setAgents } from '../store/agentsSlice';
 
-export const useAgents = createUseDataHook('agents', setAgents);
+export const useAgents = valorantDataHook('agents', setAgents);

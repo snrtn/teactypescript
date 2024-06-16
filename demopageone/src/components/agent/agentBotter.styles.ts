@@ -56,7 +56,7 @@ export const AgentItem = styled('div')(({ theme }) => ({
 	color: theme.palette.white.main,
 	cursor: 'pointer',
 	'&.active': {
-		backgroundColor: '#FE4655',
+		backgroundColor: theme.palette.red.main,
 		borderRadius: '8px',
 	},
 	h2: {

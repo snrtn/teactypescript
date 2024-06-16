@@ -22,10 +22,10 @@ export const StyledTabs = styled(Tabs)({
 
 export const StyledTab = styled(Tab)(({ theme }) => ({
 	minHeight: '10vh',
-	color: 'white',
+	color: theme.palette.white.main,
 	'&.Mui-selected': {
-		backgroundColor: '#FD4655',
-		color: 'white',
+		backgroundColor: theme.palette.red.main,
+		color: theme.palette.white.main,
 		borderRadius: '8px',
 	},
 }));
@@ -42,14 +42,14 @@ const arrowAnimation = keyframes`
   }
 `;
 
-export const AnimatedIconButton = styled(IconButton)({
+export const AnimatedIconButton = styled(IconButton)(({ theme }) => ({
 	position: 'fixed',
 	top: '50%',
 	right: 0,
 	zIndex: 1100,
 	transform: 'translateY(-50%)',
 	animation: `${arrowAnimation} 1s infinite ease-in-out`,
-	color: 'white',
+	color: theme.palette.white.main,
 	opacity: 0.6,
 	fontSize: '3rem',
-});
+}));
