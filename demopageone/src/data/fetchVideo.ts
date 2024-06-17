@@ -15,15 +15,23 @@ const fetchVideo = async (query: string): Promise<string | null> => {
 			},
 		});
 
-		if (response.data.items.length > 0) {
+		console.log('API Response:', response.data);
+
+		if (response.data.items && response.data.items.length > 0) {
 			console.log('Video found:', response.data.items[0].id.videoId);
 			return response.data.items[0].id.videoId;
 		} else {
 			console.log('No video found for query:', query);
 			return null;
 		}
-	} catch (error) {
-		console.error('Error fetching video:', error);
+	} catch (error: any) {
+		if (axios.isAxiosError(error)) {
+			if (error.response?.status !== 403) {
+				console.error('Axios error fetching video:', error.message, error.response?.data);
+			}
+		} else {
+			console.error('Error fetching video:', error.message);
+		}
 		return null;
 	}
 };

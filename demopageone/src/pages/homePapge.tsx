@@ -11,6 +11,7 @@ import {
 	CenterText,
 } from './homePage.styles';
 import AgentLoading from './loadingPage';
+import AgentSlider from '../components/agent/agentSlider';
 
 const HomePage: React.FC = () => {
 	const dispatch = useDispatch();
@@ -38,37 +39,40 @@ const HomePage: React.FC = () => {
 	const sortedAgents = [...agents].sort((a, b) => a.displayName.localeCompare(b.displayName));
 
 	return (
-		<StyledHomePageContainer>
-			<CenterText data-text='Valorant'>Valorant</CenterText>
-			<ContainerWrapper>
-				<ImageContainer>
-					{[...sortedAgents, ...agentsData, ...sortedAgents].map((agent: any, index) => (
-						<Image key={`${agent.uuid}-1-${index}`} src={agent.displayIcon} alt={agent.displayName} />
-					))}
-				</ImageContainer>
-			</ContainerWrapper>
-			<ContainerWrapper>
-				<ReverseImageContainer>
-					{[...agentsData, ...sortedAgents, ...agentsData].map((agent: any, index) => (
-						<Image key={`${agent.uuid}-2-${index}`} src={agent.displayIcon} alt={agent.displayName} />
-					))}
-				</ReverseImageContainer>
-			</ContainerWrapper>
-			<ContainerWrapper>
-				<ImageContainer>
-					{[...sortedAgents, ...agentsData, ...sortedAgents].map((agent: any, index) => (
-						<Image key={`${agent.uuid}-3-${index}`} src={agent.displayIcon} alt={agent.displayName} />
-					))}
-				</ImageContainer>
-			</ContainerWrapper>
-			<ContainerWrapper>
-				<ReverseImageContainer>
-					{[...agentsData, ...sortedAgents, ...agentsData].map((agent: any, index) => (
-						<Image key={`${agent.uuid}-4-${index}`} src={agent.displayIcon} alt={agent.displayName} />
-					))}
-				</ReverseImageContainer>
-			</ContainerWrapper>
-		</StyledHomePageContainer>
+		<>
+			<AgentSlider />
+			<StyledHomePageContainer>
+				<CenterText data-text='Valorant'>Valorant</CenterText>
+				<ContainerWrapper>
+					<ImageContainer>
+						{[...sortedAgents, ...agentsData, ...sortedAgents].map((agent: any, index) => (
+							<Image key={`${agent.uuid}-1-${index}`} src={agent.displayIcon} alt={agent.displayName} />
+						))}
+					</ImageContainer>
+				</ContainerWrapper>
+				<ContainerWrapper>
+					<ReverseImageContainer>
+						{[...agentsData, ...sortedAgents, ...agentsData].map((agent: any, index) => (
+							<Image key={`${agent.uuid}-2-${index}`} src={agent.displayIcon} alt={agent.displayName} />
+						))}
+					</ReverseImageContainer>
+				</ContainerWrapper>
+				<ContainerWrapper>
+					<ImageContainer>
+						{[...sortedAgents, ...agentsData, ...sortedAgents].map((agent: any, index) => (
+							<Image key={`${agent.uuid}-3-${index}`} src={agent.displayIcon} alt={agent.displayName} />
+						))}
+					</ImageContainer>
+				</ContainerWrapper>
+				<ContainerWrapper>
+					<ReverseImageContainer>
+						{[...agentsData, ...sortedAgents, ...agentsData].map((agent: any, index) => (
+							<Image key={`${agent.uuid}-4-${index}`} src={agent.displayIcon} alt={agent.displayName} />
+						))}
+					</ReverseImageContainer>
+				</ContainerWrapper>
+			</StyledHomePageContainer>
+		</>
 	);
 };
 

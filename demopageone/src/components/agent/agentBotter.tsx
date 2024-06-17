@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import { useMediaQuery, useTheme } from '@mui/material';
 import { AgentBotterContainer, AgentBotterSlider, NavButton, AgentItem } from './agentBotter.styles';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
@@ -17,6 +17,7 @@ const AgentBotter: React.FC<AgentBotterProps> = ({ agents, activeAgent, onAgentC
 	const theme = useTheme();
 	const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+	const [selectedAgent, setSelectedAgent] = useOutletContext<[string, React.Dispatch<React.SetStateAction<string>>]>();
 
 	const [sortedAgents, setSortedAgents] = useState<any[]>([]);
 	const [currentIndex, setCurrentIndex] = useState(0);
@@ -47,7 +48,21 @@ const AgentBotter: React.FC<AgentBotterProps> = ({ agents, activeAgent, onAgentC
 		}
 	}, [agents, onAgentClick, navigate, initialSetupDone]);
 
+	useEffect(() => {
+		if (selectedAgent) {
+			const agentIndex = sortedAgents.findIndex((agent) => agent.displayName === selectedAgent);
+			if (agentIndex !== -1) {
+				const newIndex = Math.max(
+					0,
+					Math.min(agentIndex - Math.floor(itemsPerSlide / 2), sortedAgents.length - itemsPerSlide),
+				);
+				setCurrentIndex(newIndex);
+			}
+		}
+	}, [selectedAgent, sortedAgents, itemsPerSlide]);
+
 	const handleAgentClick = (agentName: string) => {
+		setSelectedAgent('');
 		const encodedName = encodeURIComponent(agentName);
 		onAgentClick(agentName);
 		navigate(`/agent/${encodedName}`);
@@ -64,7 +79,11 @@ const AgentBotter: React.FC<AgentBotterProps> = ({ agents, activeAgent, onAgentC
 						{sortedAgents.slice(currentIndex, currentIndex + itemsPerSlide).map((agent: any) => (
 							<Grid item xs={6} sm={6} md={3} key={agent.uuid}>
 								<AgentItem
-									className={activeAgent === agent.displayName ? 'active' : ''}
+									className={
+										(activeAgent === agent.displayName && !selectedAgent) || selectedAgent === agent.displayName
+											? 'active'
+											: ''
+									}
 									onClick={() => handleAgentClick(agent.displayName)}
 								>
 									<img src={agent.displayIcon} alt={agent.displayName} width='50' height='50' />

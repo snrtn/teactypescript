@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Box } from '@mui/material';
+import { useParams } from 'react-router-dom';
 import AgentSideTab from './agentSideTab';
 import {
 	Container,
@@ -24,14 +25,16 @@ interface AgentDetailsProps {
 
 const AgentDetail: React.FC<AgentDetailsProps> = ({ agentName, tab }) => {
 	const agents = useSelector((state: any) => state.agents.agents);
-	const decodedAgentName = decodeURIComponent(agentName || '');
+	const { agentName: paramAgentName, tab: paramTab } = useParams<{ agentName: string; tab?: string }>();
+	const decodedAgentName = decodeURIComponent(agentName || paramAgentName || '');
+	const selectedTab = tab || paramTab || 'info';
 	const agent = agents.find((agent: any) => agent.displayName === decodedAgentName);
 	const [videoId, setVideoId] = useState<string | null>(null);
 
 	useEffect(() => {
 		const getVideo = async () => {
-			if (agent && tab && tab !== 'info') {
-				const ability = agent.abilities.find((ability: any) => ability.displayName === tab);
+			if (agent && selectedTab && selectedTab !== 'info') {
+				const ability = agent.abilities.find((ability: any) => ability.displayName === selectedTab);
 				if (ability) {
 					const query = `${agent.displayName} ${ability.displayName}`;
 					const video = await fetchVideo(query);
@@ -40,7 +43,7 @@ const AgentDetail: React.FC<AgentDetailsProps> = ({ agentName, tab }) => {
 			}
 		};
 		getVideo();
-	}, [agent, tab]);
+	}, [agent, selectedTab]);
 
 	if (!agent) {
 		return <p>Agent not found: {decodedAgentName}</p>;
@@ -51,7 +54,7 @@ const AgentDetail: React.FC<AgentDetailsProps> = ({ agentName, tab }) => {
 	};
 
 	const renderTabContent = () => {
-		if (tab === 'info' || !tab) {
+		if (selectedTab === 'info' || !selectedTab) {
 			return (
 				<ContentBox agent={agent}>
 					<InfoBox>
@@ -86,7 +89,7 @@ const AgentDetail: React.FC<AgentDetailsProps> = ({ agentName, tab }) => {
 			);
 		}
 
-		const ability = agent.abilities.find((ability: any) => ability.displayName === tab);
+		const ability = agent.abilities.find((ability: any) => ability.displayName === selectedTab);
 
 		return (
 			<SkillBox>

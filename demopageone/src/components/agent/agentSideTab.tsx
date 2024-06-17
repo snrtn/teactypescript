@@ -18,7 +18,7 @@ const AgentSideTab: React.FC<AgentSideTabProps> = ({ abilities, onTabChange }) =
 
 	const handleTabChange = (event: React.ChangeEvent<{}>, newValue: string) => {
 		onTabChange(newValue);
-		navigate(`/agent/${agentName}/${encodeURIComponent(newValue)}`);
+		navigate(`/agent/${encodeURIComponent(agentName || '')}/${encodeURIComponent(newValue)}`);
 		setDrawerOpen(false);
 	};
 
@@ -31,6 +31,8 @@ const AgentSideTab: React.FC<AgentSideTabProps> = ({ abilities, onTabChange }) =
 		}
 		setDrawerOpen(open);
 	};
+
+	const decodedTab = tab ? decodeURIComponent(tab) : 'info';
 
 	return (
 		<>
@@ -49,7 +51,7 @@ const AgentSideTab: React.FC<AgentSideTabProps> = ({ abilities, onTabChange }) =
 							<StyledTabs
 								orientation='vertical'
 								variant='scrollable'
-								value={tab || 'info'}
+								value={decodedTab}
 								aria-label='Agent details tabs'
 								onChange={handleTabChange}
 							>
@@ -66,7 +68,7 @@ const AgentSideTab: React.FC<AgentSideTabProps> = ({ abilities, onTabChange }) =
 					<StyledTabs
 						orientation='vertical'
 						variant='scrollable'
-						value={tab || 'info'}
+						value={decodedTab}
 						aria-label='Agent details tabs'
 						onChange={handleTabChange}
 					>
