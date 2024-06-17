@@ -62,6 +62,7 @@ export const ListItemStyled = styled(ListItem)(({ theme }) => ({
 export const CloseButton = styled(IconButton)(({ theme }) => ({
 	position: 'absolute',
 	top: 10,
+	color: theme.palette.white.main,
 	right: 10,
 	zIndex: 1,
 }));
